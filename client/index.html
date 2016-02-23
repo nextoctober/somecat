@@ -1,0 +1,126 @@
+
+
+
+<template name="oooLayout">
+
+<head>
+  <title>Gimme FOOD!</title>
+</head>
+
+<body>
+
+	{{> header}}
+
+	 	{{> newmeal}}
+
+<div class="meal">
+  	<img src="https://pp.vk.me/c606227/v606227278/68f1/x5285OqlPgE.jpg">
+  	<h1 class="mealname">ZHOPA Steak</h1>
+  	<p class="price">1800 rubles</p>
+  	<p>Feel the tenderness of this ass. It looks like a pie but it's not. Trust me, I'm a cat.</p>
+</div>
+
+
+
+
+	{{> yield }}
+
+  
+</body>
+
+
+</template>
+
+
+<template name="header">
+  <header class="navbar">
+    <div class="navbar-inner">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <div class="nav-collapse collapse">
+        <ul class="nav pull-right">
+          <li>{{>loginButtons}}</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+</template>
+
+
+
+<template name="menu">
+
+
+	  {{#each dishes}}
+        {{> dish}}
+      {{/each}}  
+
+</template>
+
+
+
+
+
+<template name="dish">
+  <div class="meal">
+  	<img src="{{photo}}">
+  	<h1 class="mealname">{{mealname}}</h1>
+  	<p class="price">{{price}} rubles</p>
+  	<p>{{description}}.</p>
+  	<button class="delete">Delete</button>
+</div>
+</template>
+
+
+
+
+
+<template name="newmeal">
+    <form>
+      <input type="file" name="mealpic" class="myFileInput">
+      <input type="text" name="mealname" />
+      <input type="text" name="price" />
+      <input type="text" name="description" />
+      <input type="submit" value="Add Meal" />
+    </form>
+</template>
+
+
+
+
+<template name="lepra">
+
+
+	{{> yield region='top'}}
+	{{> yield region='left'}}
+	{{> yield region='right'}}
+
+</template>
+
+
+<template name="leprotop">
+	
+  Носороги видят только сны
+
+</template>
+
+
+<template name="leproleft">
+	
+	ЛОГО
+	КОНСТИТУАЦИЯ
+	DARII ПГ 
+
+</template>
+
+<template name="leproright">
+	<p>ПОСТ ОТ ЙОВАНА</p>
+	<p>ПОСТ ОТ ЯРДРЕЯ</p>
+</template>
+
+
+
+

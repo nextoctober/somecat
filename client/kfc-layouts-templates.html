@@ -1,0 +1,185 @@
+
+
+<template name="kfcLayout">
+
+<head>
+  <title>Welcome to KFC</title>
+  <link href="//cdn.muicss.com/mui-0.4.6/css/mui.min.css" rel="stylesheet" type="text/css" />
+  <script src="//cdn.muicss.com/mui-0.4.6/js/mui.min.js"></script>
+</head>
+
+<body>
+
+<div class="mui-appbar">
+  
+</div>
+
+{{> regiii}}
+{{> yield}}
+<!-- {{> yield}} -->
+  
+</body>
+</template>
+
+
+
+
+<template name ="kfcEdit">
+<div class="mui-row">
+  <div class="mui-col-md-8">Choose a category: {{> chooseCategory}}
+  </div>
+</div>
+<div class="mui-row">
+  <div class="mui-col-md-4">{{> kfcnewmeal}}</div>
+  <div class="mui-col-md-8"></div>
+</div>
+</template>
+
+
+
+
+<template name ="ShowByCategory">
+    {{#each this}}
+       {{> kfcdish}}
+    {{/each}}
+</template>
+
+
+
+
+<template name="chooseCategory">
+  {{#each categories}}
+    <button class="mui-btn mui-btn--flat catButton">{{this}}</button>
+  {{/each}}
+</template>
+
+
+
+
+
+<template name="kfcmenu">
+
+  TODAY SPECIALS!
+  {{> chooseCategory}}
+
+	{{#each dishes}}
+    {{> kfcdish}}
+  {{/each}}  
+</template>
+
+
+
+
+<template name="kfcdish">
+  <div class="meal">
+  	<img src="{{photo}}">
+  	<h1 class="mealname">{{mealname}}</h1>
+  	<p class="price">{{price}} rubles</p>
+  	<p>{{description}}.</p>
+  	<button class="delete">Delete</button>
+  </div>
+</template>
+
+
+
+
+
+<template name="kfcnewmeal">
+<div class="meal">
+  <form>
+    <legend>New KFC masterpiece</legend>
+    <input type="file" name="mealpic" class="myFileInput">
+    <div class="mui-textfield">
+      <input type="text" placeholder="Name" name="mealname" >
+    </div>
+    <div class="mui-textfield">
+      <input type="text" placeholder="Price in USD" name="price">
+    </div>
+    <div class="mui-textfield">
+      <input type="text" placeholder="Category" name="category">
+    </div>
+    <div class="mui-textfield">
+      <textarea placeholder="Description" name="description"></textarea>
+    </div>
+    <button type="submit" class="mui-btn mui-btn--raised subbuton">Submit</button>
+</form>
+</div>
+</template>
+
+
+
+
+<!-- /////////////////////////////////////////////////////////////////////// -->
+
+<template name ="regiii">
+
+<div class="log-container">
+    {{#if currentUser}}
+
+
+  <div class="logged mui--text-light">
+    You're logged in.
+    <a href="#" class="logout">Logout</a>
+  </div>
+
+
+    {{else}}
+
+
+        {{#if showTheRegisterDiv}}
+        <button class="mui-btn mui-btn--primary logreg">Login/Register</button>
+        {{else}}
+
+
+
+    <div class="log-form">
+    <a href="#" class="closereg">Close</a>
+    <ul class="mui-tabs__bar">
+      <li class="mui--is-active"><a data-mui-toggle="tab" data-mui-controls="pane-default-1">Login</a></li>
+      <li><a data-mui-toggle="tab" data-mui-controls="pane-default-2">Register</a></li>
+    </ul>
+  <div class="mui-tabs__pane mui--is-active" id="pane-default-1">{{> login}}</div>
+  <div class="mui-tabs__pane" id="pane-default-2">{{> register}}</div>
+    </div>
+{{/if}}
+{{/if}}
+</div>
+</template>
+
+
+
+
+
+<template name="dashboard">
+    
+</template>
+
+
+
+<template name="register">
+    <form>
+      <div class="mui-textfield">
+        <input type="email" name="registerEmail">
+      </div>
+      <div class="mui-textfield">
+        <input type="password" name="registerPassword">
+      </div>
+      <button type="submit" class="mui-btn mui-btn--small mui-btn--primary subbuton">Register</button>
+      
+    </form>
+</template>
+
+
+
+<template name="login">
+    <form>
+      <div class="mui-textfield">
+        <input type="email" name="loginEmail">
+      </div>
+      <div class="mui-textfield">
+        <input type="password" name="loginPassword">
+      </div>
+        <button type="submit" class="mui-btn mui-btn--small mui-btn--primary subbuton">Login</button>
+    </form>
+</template>
+
